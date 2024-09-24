@@ -5,6 +5,3 @@ SELECT ID, LENGTH
     ) FISH_INFO
     WHERE 순위 <= 10;
 
-# SELECT *, ROW_NUMBER() OVER (ORDER BY LENGTH DESC, ID) AS 순위
-#           FROM FISH_INFO 
-          
