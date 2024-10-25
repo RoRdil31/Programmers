@@ -14,11 +14,3 @@ def solution(survey, choices):
     if mbti['A'] < mbti['N'] : answer = answer.replace('A','N')
     
     return answer
-
-
-
-# R T
-# C F
-# J M
-# A N
-# min(ord(), ord())=> 같을시 사전 순.
