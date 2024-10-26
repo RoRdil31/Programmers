@@ -1,11 +1,11 @@
 def solution(id_list, report, k):
-    count = {}
-    result = {}
-    mail_count = {}
-    for i in id_list:
-        count[i] = 0
-        result[i] = []
-        mail_count[i] = 0
+    count = {i:0 for i in id_list}
+    result = {i:[] for i in id_list}
+    mail_count = {i:0 for i in id_list}
+    # for i in id_list:
+    #     count[i] = 0
+    #     result[i] = []
+    #     mail_count[i] = 0
     
     for i in set(report):
         a, b = i.split(' ')
