@@ -5,5 +5,3 @@ def solution(citations):
         # cnt = sum(1 for j in citations if j >= i)
         result = max(result, min(i, idx))
     return result 
-    # answer = max(map(min, enumerate(citations, start=1)))
-    # return answer
