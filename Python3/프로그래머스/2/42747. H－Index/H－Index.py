@@ -1,8 +1,10 @@
 def solution(citations):
     result = 0
     citations.sort(reverse=True)
-    for i in citations:
-        cnt = sum(1 for j in citations if j >= i)
-        result = max(result, min(i, cnt))
+#     for i in citations:
+#         cnt = sum(1 for j in citations if j >= i)
+#         result = max(result, min(i, cnt))
         
-    return result
+#     return result
+    answer = max(map(min, enumerate(citations, start=1)))
+    return answer
