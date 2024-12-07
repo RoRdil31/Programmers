@@ -1,22 +1,25 @@
-from collections import Counter
 def solution(dirs):
-    answer, now, paths = 0, [0,0], [[0,0]]
+    x, y, paths = 0, 0, set()
     ways = {'U':[0,1], 'D':[0,-1], 'L':[-1,0], 'R':[1,0]}
     for i in dirs:
-        nxt = list(map(sum, zip(now, ways[i])))
-        if ((-5 <= nxt[0] <= 5) and (-5 <= nxt[1] <= 5)):
-            now = nxt
-            paths.append(now)
+        # nxt = list(map(sum, zip(now, ways[i])))
+        dx = x + ways[i][0]
+        dy = y + ways[i][1]
+        if ((-5 <= dx <= 5) and (-5 <= dy <= 5)):
+            paths.add((x,y,dx,dy))
+            paths.add((dx,dy,x,y))
+            
+            x, y = dx, dy
     print(paths)
-    two = []
-    for i in range(len(paths)-1):
-        s1 = f'{paths[i][0]}{paths[i][1]}{paths[i+1][0]}{paths[i+1][1]}'
-        s2 = f'{paths[i+1][0]}{paths[i+1][1]}{paths[i][0]}{paths[i][1]}'
-        print(s1, s2)
-        if (s1 in two) or (s2 in two):
-            continue
-        two.append(s1)
-    return len(two)
+    # two = []
+    # for i in range(len(paths)-1):
+    #     s1 = f'{paths[i][0]}{paths[i][1]}{paths[i+1][0]}{paths[i+1][1]}'
+    #     s2 = f'{paths[i+1][0]}{paths[i+1][1]}{paths[i][0]}{paths[i][1]}'
+    #     print(s1, s2)
+    #     if (s1 in two) or (s2 in two):
+    #         continue
+    #     two.append(s1)
+    return len(paths)//2
     
     # two_paths = [f'{paths[i][0]}{paths[i][1]}{paths[i+1][0]}{paths[i+1][1]}' for i in range(len(paths)-1)]
     # two_paths2 = [f'{paths[i+1][0]}{paths[i+1][1]}{paths[i][0]}{paths[i][1]}' for i in range(len(paths)-1)]
