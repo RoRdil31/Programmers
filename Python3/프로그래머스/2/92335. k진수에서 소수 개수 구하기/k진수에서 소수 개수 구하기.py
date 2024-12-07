@@ -4,8 +4,10 @@ def solution(n, k):
     while n > 0:
         num += str(n%k)
         n = n//k
+        
     lst = num[::-1].split('0')
     lst = [int(i) for i in lst if (i!='')]
+    
     for num in lst:
         if num == 1 : continue
         if num == 2 or num == 3 : cnt += 1; continue
