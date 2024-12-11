@@ -1,3 +1,3 @@
 def solution(numbers): # XOR
-    return [num+(( num^(num+1))>>2 )+1 for num in numbers]
+    return [((num ^ (num+1)) >> 2) + num + 1 for num in numbers]
     
