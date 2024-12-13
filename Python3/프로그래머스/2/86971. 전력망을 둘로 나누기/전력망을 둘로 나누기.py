@@ -10,8 +10,6 @@ def solution(n, wires):
 
         return total
     
-    
-    
     counter = Counter(list(chain(*wires)))
     counter = counter.most_common()
     root_len = counter[0][1]
@@ -19,10 +17,7 @@ def solution(n, wires):
     dic = {i:[] for i in range(1,n+1)}
     for v1, v2 in wires: dic[v1].append(v2); dic[v2].append(v1)
     
-    # print(counter)
-    # print(roots)
     answer = 9999
-    # for root in roots:
     for root in range(1,n+1):
         for i in dic[root]:
             visited = [root, i]
