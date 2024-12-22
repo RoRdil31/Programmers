@@ -5,25 +5,23 @@ def solution(N, road, K):
         ways[u].append((v,w))
         ways[v].append((u,w))
         
-    def dijkstra(start):
+    def Dijkstra(start):
         nodes = {i:500001 for i in ways}
         nodes[start] = 0
-        queue = [(0, start)]
+        queue = [(start, 0)]
+        
         while queue:
-            c_distance, c_node = hq.heappop(queue)
-            print(c_distance, c_node)
+            c_node, c_dist = hq.heappop(queue)
+            if c_dist > K : continue
             
-            if c_distance > nodes[c_node]: continue
-            
-            for neighbor, weight in ways[c_node]:
-                d = c_distance + weight
-                if d < nodes[neighbor]:
-                    nodes[neighbor] = d
-                    hq.heappush(queue, (d, neighbor))
-            
+            for neigh, dist in ways[c_node]:
+                next_dist = dist + c_dist
+                if next_dist < nodes[neigh]:
+                    nodes[neigh] = next_dist
+                    hq.heappush(queue, (neigh, next_dist))
+                    
         return nodes
+        
+    result = Dijkstra(1)
     
-    
-    nodes = dijkstra(1)
-    
-    return sum(1 for i in nodes.values() if i <= K)
+    return sum(1 for i in result.values() if i <= K)
