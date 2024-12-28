@@ -1,3 +1,27 @@
+def solution(k, m, score):
+    price = 0
+    score = sorted(score, reverse=True)
+    for i in range(m, len(score)+1, m):
+        price += min(score[i-m:i])*m
+    return price
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # def solution(k, m, score):
 #     price = 0
 #     score = sorted(score,reverse=True)
@@ -7,5 +31,5 @@
     
 #     return price
 
-def solution(k, m, score):
-    return sum(sorted(score)[len(score)%m::m])*m
+# def solution(k, m, score):
+#     return sum(sorted(score)[len(score)%m::m])*m
