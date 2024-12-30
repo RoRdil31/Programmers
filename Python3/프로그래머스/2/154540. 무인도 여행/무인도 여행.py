@@ -1,8 +1,8 @@
 from collections import deque
 def solution(maps):
-    maps.insert(0,'X'*len(maps[0]))
-    maps.append('X'*len(maps[0]))
-    maps = ['X'+m+'X' for m in maps]
+    # maps.insert(0,'X'*len(maps[0]))
+    # maps.append('X'*len(maps[0]))
+    # maps = ['X'+m+'X' for m in maps]
     directions = [(-1,0),(1,0),(0,-1),(0,1)] # 상하좌우
     rows, cols = len(maps), len(maps[0])
     grid = [list(row) for row in maps]
@@ -16,7 +16,7 @@ def solution(maps):
             x, y = queue.popleft()
             for dx, dy in directions:
                 nx, ny = x+dx, y+dy
-                if grid[nx][ny]!='X':
+                if 0<=nx<rows and 0<=ny<cols and grid[nx][ny]!='X':
                     queue.append((nx, ny))
                     score += int(grid[nx][ny])
                     grid[nx][ny] = 'X'
