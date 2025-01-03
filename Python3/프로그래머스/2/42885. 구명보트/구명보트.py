@@ -1,24 +1,38 @@
+from collections import deque
 def solution(people, limit):
+    people = deque(sorted(people, reverse=True))
     cnt = 0
-    people = sorted(people,reverse=True)
-    
-    for i in people:
-        total = i
-        if total + people[-1] <= limit : people.pop()
+    while people:
+        w = people.popleft()
+        if people and (w + people[-1]) <= limit: people.pop()
         cnt += 1
-            
+    
     return cnt
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def solution(people, limit):
 #     cnt = 0
-#     people.sort(reverse=True)
-#     first, last = 0, len(people)-1
+#     people = sorted(people,reverse=True)
     
-#     while first <= last:
-#         if people[first] + people[last] > limit: first += 1
-#         else : first +=1; last -=1
-        
+#     for i in people:
+#         total = i
+#         if total + people[-1] <= limit : people.pop()
 #         cnt += 1
-        
+            
 #     return cnt
