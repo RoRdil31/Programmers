@@ -1,15 +1,14 @@
-from collections import Counter
 def solution(N, stages):
-    ans = {i:0 for i in range(1,N+1)}
-    counter = Counter(stages)
+    answer = []
     l = len(stages)
-    
-    for i in sorted(counter):
-        if i==N+1 : break
-        ans[i] = counter[i] / l
-        l -= counter[i]
-    
-    return sorted(ans, key = lambda x : ans[x], reverse=True)
+    for i in range(1,N+1):
+        if i in stages:
+            cnt = stages.count(i)
+            answer.append((i,cnt/l))
+            l -= cnt
+        else : answer.append((i,0))
+        
+    return [i[0] for i in sorted(answer, key = lambda x : (-x[1],x))]
 
 
 
