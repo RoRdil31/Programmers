@@ -1,5 +1,12 @@
 def solution(left, right):
-    return sum(-n if int(n**0.5)==(n**0.5) else n for n in range(left,right+1))
+    ans = 0
+    for num in range(left, right+1):
+        a = sum(1 for i in range(1, int(num**0.5)+1) if num%i==0)*2
+        if int(num**0.5) == num**0.5: a -= 1
+        
+        if a%2==0 : ans += num
+        else : ans -= num
+    return ans
 
 
 
