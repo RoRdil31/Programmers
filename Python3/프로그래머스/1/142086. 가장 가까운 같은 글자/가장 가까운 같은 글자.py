@@ -1,11 +1,11 @@
 def solution(s):
     ans = []
-    record = {}
-    for idx,w in enumerate(s):
-        if w in record.keys():
-            ans.append(idx - record[w])
-        else : ans.append(-1)
-        record[w] = idx
+    d = {i:-1 for i in set(s)}
+    
+    for idx, i in enumerate(s):
+        if d[i] == -1 : ans.append(d[i])
+        else : ans.append(idx - d[i])
+        d[i] = idx
         
     return ans
 
@@ -36,3 +36,11 @@ def solution(s):
 #         record[c] = idx
             
 #     return answer
+
+
+# record = {}
+#     for idx,w in enumerate(s):
+#         if w in record: ans.append(idx - record[w])
+#         else : ans.append(-1)
+#         record[w] = idx
+        
