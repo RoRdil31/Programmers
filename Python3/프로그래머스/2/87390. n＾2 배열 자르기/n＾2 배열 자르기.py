@@ -1,10 +1,6 @@
 def solution(n, left, right):
-    answer = []
-    for i in range(left, right+1):
-        answer.append(max(i//n+1, i%n+1))
-        
-    return answer
-
+    
+    return [max((i//n)+1, (i%n)+1) for i in range(left, right+1)]
 
 
 
@@ -22,11 +18,9 @@ def solution(n, left, right):
 
 
 # def solution(n, left, right):
-#     result = []
-
+#     answer = []
 #     for i in range(left, right+1):
-#         y, x = i//n, i%n
-#         value = max(y,x) + 1
-#         result.append(value)
+#         answer.append(max(i//n+1, i%n+1))
+        
+#     return answer
 
-#     return result
