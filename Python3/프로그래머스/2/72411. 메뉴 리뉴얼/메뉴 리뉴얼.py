@@ -1,14 +1,17 @@
-from collections import Counter
 from itertools import combinations as comb
+from collections import Counter
 def solution(orders, course):
     result = []
-
-    for cnt in course:
-        comb_list = []
-        for order in orders:
-            comb_list += comb(sorted(order), cnt)
+    for i in course:
+        c = Counter()
+        for order in orders: c += Counter(list(map(''.join, comb(sorted(order),i))))
         
-        most_ordered = Counter(comb_list).most_common()
-        result += [ k for k, v in most_ordered if v > 1 and v == most_ordered[0][1] ]
+        if c:
+            max_cnt = c.most_common()[0][1]
+            if max_cnt >= 2:
+                for k,v in c.most_common():
+                    if max_cnt != v : break
+                    result.append(k)
+            
     
-    return [ ''.join(v) for v in sorted(result) ]
+    return sorted(result)
