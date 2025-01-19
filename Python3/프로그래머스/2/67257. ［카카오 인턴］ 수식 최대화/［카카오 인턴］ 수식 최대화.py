@@ -2,13 +2,12 @@ def solution(expression):
     answer = []
     operations = [('-','+','*'),('-','*','+'),('+','-','*'),('+','*','-'),('*','+','-'),('*','-','+')]
     for a,b,c in operations:
-        tmp_list = []
+        lst = []
         for e in expression.split(a):
-            tmp = [f'({i})' for i in e.split(b)]
-            tmp_list.append( f'({b.join(tmp)})' )
+            tmp = [ f'({i})' for i in e.split(b) ]
+            lst.append( f'({b.join(tmp)})')
+        answer.append(abs(eval(f'{a.join(lst)}')))
             
-        answer.append(abs(eval(a.join(tmp_list))))
-    
     return max(answer)
 
 
