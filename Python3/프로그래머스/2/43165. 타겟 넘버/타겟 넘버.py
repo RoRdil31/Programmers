@@ -1,11 +1,9 @@
 from itertools import product
 def solution(numbers, target):
-    cnt = 0
-    nums = [(-x,x) for x in numbers]
-    for i in product(*nums):
-        if sum(i) == target: cnt += 1
+    l = [(i,-i) for i in numbers]
+    a = list(map(sum, product(*l)))
     
-    return cnt
+    return a.count(target)
 
 
 
@@ -27,9 +25,7 @@ def solution(numbers, target):
 # from itertools import product
 # def solution(numbers, target):
 #     l = [(x, -x) for x in numbers]
-#     print(l)
 #     s = list(map(sum, product(*l)))
-#     print(s)
 #     return s.count(target)
 # # def solution(numbers, target):
 # #     global answer
