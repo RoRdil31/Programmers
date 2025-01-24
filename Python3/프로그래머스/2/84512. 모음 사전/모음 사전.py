@@ -1,12 +1,12 @@
 from itertools import product
 def solution(word):
     answer = []
-    words = ['A','E','I','O','U']
-    for i in range(1,6): 
-        for j in list(product(words, repeat=i)):
-            answer.append(''.join(j))
-    answer.sort()
-    return answer.index(word)+1
+    fix = 'AEIOU'
+    for i in range(1, len(fix)+1):
+        for j in map(''.join, product(fix, repeat=i)):
+            answer.append(j)
+    
+    return sorted(answer).index(word)+1
 
 
 
