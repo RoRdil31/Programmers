@@ -1,14 +1,44 @@
 from itertools import permutations as perm
 def solution(numbers):
     answer, nums = 0, set()
-    for i in range(1, len(numbers)+1):
-        for j in perm(numbers,i):
-            nums.add(int(''.join(j)))
+    for i in range(1,len(numbers)+1):
+        for j in map(''.join, perm(numbers, i)):
+            nums.add(int(j))
     nums -= {0,1}
     for num in nums:
-        if not sum(1 for i in range(2, int(num**0.5)+1) if num%i == 0): answer += 1
-    
+        if sum(1 for i in range(2, int(num**0.5)+1) if num%i==0) == 0: answer += 1
+        
     return answer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# from itertools import permutations as perm
+# def solution(numbers):
+#     answer, nums = 0, set()
+    
+#     for i in range(1, len(numbers)+1):
+#         nums |= set(map(int, map("".join, perm(list(numbers),i))))
+#     nums -= {0,1}
+#     for num in nums:
+#         if not sum(1 for i in range(2, int(num**0.5)+1) if num%i == 0): answer += 1
+    
+#     return answer
 
 
 
