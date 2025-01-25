@@ -1,30 +1,28 @@
-from collections import deque
 import copy
+from collections import deque
 def solution(maps):
+    ways = [(0,1), (1,0), (-1,0), (0,-1)]
     rows, cols = len(maps), len(maps[0])
     goal = [rows-1, cols-1]
-    ways = [(1,0),(0,1),(-1,0),(0,-1)]
-    queue = deque()
     
-    def bfs(queue):
+    def bfs(start):
+        visited = copy.deepcopy(maps)
+        queue = deque([start])
         
         while queue:
-            x, y, cnt = queue.popleft()
-        
-            if [x,y] == goal: return cnt
-
+            x, y, v = queue.popleft()
             for dx, dy in ways:
                 nx, ny = x+dx, y+dy
-                if (0<=nx<rows) and (0<=ny<cols) and maps[nx][ny]==1 :
-                    maps[nx][ny] = 0
-                    queue.append( (nx, ny, cnt+1) )
+                if 0<=nx<rows and 0<=ny<cols and visited[nx][ny]!=0:
+                    if goal == [nx,ny]: return v+1
+                    queue.append((nx,ny,v+1))
+                    visited[nx][ny] = 0
         
         return -1
     
-    queue.append((0,0,1))
-    result = bfs(queue)
+    answer = bfs([0,0,1])
     
-    return result
+    return answer
 
 
 
@@ -37,6 +35,40 @@ def solution(maps):
 
 
 
+
+
+
+
+
+
+
+
+# from collections import deque
+# def solution(maps):
+#     rows, cols = len(maps), len(maps[0])
+#     goal = [rows-1, cols-1]
+#     ways = [(1,0),(0,1),(-1,0),(0,-1)]
+#     queue = deque()
+    
+#     def bfs(queue):
+        
+#         while queue:
+#             x, y, cnt = queue.popleft()
+        
+#             if [x,y] == goal: return cnt
+
+#             for dx, dy in ways:
+#                 nx, ny = x+dx, y+dy
+#                 if (0<=nx<rows) and (0<=ny<cols) and maps[nx][ny]==1 :
+#                     maps[nx][ny] = 0
+#                     queue.append( (nx, ny, cnt+1) )
+        
+#         return -1
+    
+#     queue.append((0,0,1))
+#     result = bfs(queue)
+    
+#     return result
 
 
 
